@@ -41,6 +41,10 @@ Out of scope:
 5. Reporting functionality with various predefined reports
 6. Data export in multiple formats (CSV, Excel)
 7. Email notifications for application status updates
+8. Data synchronization with ActiveCampaign
+9. Integration with BI Tool for Data Analysis and Visualization
+10. Integration with AI tool for advanced analytics and insights
+11. Data import functionality to get data into the database
 
 ### Non-Functional Requirements
 
@@ -59,6 +63,10 @@ Out of scope:
 5. Cloud Platform: Amazon Web Services (AWS)
 6. Version Control: Git with GitHub
 7. CI/CD: GitHub Actions
+8. ActiveCampaign API integration
+9. BI Tool: Power BI or Tableau
+10. AI Tool: TensorFlow or PyTorch for machine learning capabilities
+11. ETL tools: Apache NiFi or Talend for data import and synchronization
 
 ## 3. System Architecture and Design
 
@@ -74,6 +82,10 @@ graph TD
     D -->|File Storage| G[S3 Bucket]
     D -->|Email Notifications| H[SES]
     I[Admin Dashboard] -->|HTTPS| B
+    D -->|Sync| J[ActiveCampaign]
+    D -->|Analytics| K[BI Tool]
+    D -->|ML Insights| L[AI Tool]
+    M[Data Sources] -->|ETL| E
 ```
 
 The CPL Database system follows a client-server architecture:
@@ -121,8 +133,29 @@ The CPL Database system follows a client-server architecture:
    - Interactions: Communicates with SES for email delivery
 
 7. **Document Management Module**
+
    - Responsibilities: Handles upload, storage, and retrieval of CPL-related documents
    - Interactions: Communicates with S3 Bucket for document storage and retrieval
+
+8. **Data Synchronization Module**
+
+Responsibilities: Syncs data between CPL Database and ActiveCampaign
+Interactions: Communicates with Database and ActiveCampaign API
+
+9. **BI Integration Module**
+
+Responsibilities: Provides data to BI Tool for analysis and visualization
+Interactions: Queries Database, prepares data for BI Tool
+
+10. **AI Integration Module**
+
+Responsibilities: Utilizes AI/ML for advanced analytics and insights
+Interactions: Processes data from Database, provides insights to users
+
+11. **Data Import Module**
+
+Responsibilities: Manages the process of importing data into the CPL Database
+Interactions: Connects to various data sources, transforms and loads data into Database
 
 ## Data Model
 
@@ -296,13 +329,16 @@ We will use an Agile Scrum methodology for this project. This approach allows fo
 
 ### Milestones and Timeline
 
-1. Sprint 0 (1 week): Project setup and initial planning
-2. Sprint 1-2 (4 weeks): User management and authentication system
-3. Sprint 3-4 (4 weeks): CPL application module and database implementation
-4. Sprint 5-6 (4 weeks): Search, filter, and reporting functionalities
-5. Sprint 7-8 (4 weeks): Document management and data export features
-6. Sprint 9 (2 weeks): Testing, bug fixes, and performance optimization
-7. Sprint 10 (2 weeks): Deployment preparation and user acceptance testing
+Sprint 0 (1 week): Project setup and initial planning
+Sprint 1-2 (4 weeks): User management, authentication system, and data import functionality
+Sprint 3-4 (4 weeks): CPL application module and database implementation
+Sprint 5-6 (4 weeks): Search, filter, and reporting functionalities
+Sprint 7-8 (4 weeks): Document management and data export features
+Sprint 9-10 (4 weeks): ActiveCampaign integration and data synchronization
+Sprint 11-12 (4 weeks): BI Tool integration and dashboard development
+Sprint 13-14 (4 weeks): AI tool integration and advanced analytics implementation
+Sprint 15 (2 weeks): Testing, bug fixes, and performance optimization
+Sprint 16 (2 weeks): Deployment preparation and user acceptance testing
 
 ## 5. Development Environment Setup
 
@@ -316,6 +352,10 @@ We will use an Agile Scrum methodology for this project. This approach allows fo
 - Version Control: Git, GitHub
 - CI/CD: GitHub Actions
 - Cloud Services: AWS (EC2, RDS, S3, SES)
+- ETL: Apache NiFi or Talend
+- BI Tool: Power BI or Tableau
+- AI/ML: TensorFlow or PyTorch
+- ActiveCampaign API SDK
 
 ### Version Control
 
@@ -327,11 +367,6 @@ We will use Git for version control with the following branching strategy:
 - `hotfix/*`: Emergency fixes for production
 
 ### Sample Code and UI for Dashboard
-
-<img width="786" alt="Screenshot 2024-08-31 at 7 13 53 AM" src="https://github.com/user-attachments/assets/b61dc165-bfc4-4c47-8bc9-e11fa999d332">
-<img width="781" alt="Screenshot 2024-08-31 at 7 07 00 AM" src="https://github.com/user-attachments/assets/40c0dca9-85e9-4b9d-af55-8c023b85298e">
-<img width="796" alt="Screenshot 2024-08-31 at 7 06 51 AM" src="https://github.com/user-attachments/assets/ab88d339-06ab-4885-8cec-5a5cd61dc07e">
-
 
 ### Development Environment Setup
 
@@ -351,6 +386,9 @@ We will use Git for version control with the following branching strategy:
 3. End-to-End Testing: Cypress for frontend E2E tests
 4. Performance Testing: Apache JMeter for load and stress testing
 5. Security Testing: OWASP ZAP for vulnerability scanning
+6. Develop test scenarios for data synchronization with ActiveCampaign
+7. Create test cases for BI Tool integration and data accuracy
+8. Design test scenarios for AI-powered insights and recommendations
 
 ### Test Environment Setup
 
@@ -406,6 +444,9 @@ We will implement a CI/CD pipeline using GitHub Actions for automated testing an
 2. Use prepared statements to prevent SQL injection
 3. Implement rate limiting on API endpoints
 4. Regular security audits and penetration testing
+5. Implement secure data transfer protocols for ActiveCampaign synchronization
+6. Ensure proper access controls for BI Tool data access
+7. Implement data anonymization techniques for AI/ML processing when necessary
 
 ### Authentication and Authorization
 
@@ -426,6 +467,9 @@ We will implement a CI/CD pipeline using GitHub Actions for automated testing an
 1. Create a user manual covering all features of the CPL Database tool
 2. Develop quick-start guides for common tasks
 3. Provide FAQ section for troubleshooting
+4. Document data synchronization processes and ActiveCampaign integration
+5. Create documentation for BI Tool setup and dashboard creation
+6. Provide documentation on AI/ML models and their integration with the system
 
 ### Technical Documentation
 
@@ -465,6 +509,9 @@ We will implement a CI/CD pipeline using GitHub Actions for automated testing an
 1. Establish a tiered support system (L1, L2, L3)
 2. Set up a helpdesk system for tracking support tickets
 3. Define SLAs for different types of issues
+4. Schedule monthly reviews of data synchronization processes
+5. Plan for quarterly updates to BI dashboards and reports
+6. Implement a system for continuous improvement of AI/ML models
 
 ### Maintenance Schedule
 
