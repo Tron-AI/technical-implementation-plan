@@ -328,8 +328,6 @@ We will use Git for version control with the following branching strategy:
 
 ### Sample Code and UI for Dashboard
 
-Great, to add this code to your `README.md` file with proper formatting, you can wrap it with triple backticks and specify `javascript` for syntax highlighting. Here’s how you can add your React code:
-
 \```javascript
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -351,6 +349,7 @@ const MockupDashboard = () => (
 <TabsTrigger value="settings">Settings</TabsTrigger>
 </TabsList>
 <TabsContent value="applications">
+
 <div className="space-y-4">
 <Input placeholder="Search applications..." />
 <div className="grid grid-cols-3 gap-4">
@@ -386,6 +385,7 @@ const MockupApplicationForm = () => (
 <CardTitle>New CPL Application</CardTitle>
 </CardHeader>
 <CardContent>
+
 <form className="space-y-4">
 <div>
 <Label htmlFor="name">Full Name</Label>
@@ -407,6 +407,7 @@ const MockupApplicationForm = () => (
 
 export default function CPLDatabaseMockups() {
 return (
+
 <div className="space-y-8">
 <MockupDashboard />
 <MockupApplicationForm />
