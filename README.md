@@ -366,6 +366,97 @@ graph TD
 
 ```
 
+## 3.5 Data Ingestion and ETL Processes
+
+To address the critical aspect of getting data into the CPL Database, we will implement a robust data ingestion and ETL (Extract, Transform, Load) process. This process will ensure that data from various sources is accurately and efficiently imported into our system.
+
+### Data Sources
+
+1. Legacy Systems: Existing databases or file-based systems containing historical CPL data
+2. External APIs: Third-party services providing relevant data
+3. Batch Files: Regular data dumps from partner organizations
+4. User Inputs: Data entered through the web application interface
+
+### ETL Process
+
+We will use Apache NiFi as our primary ETL tool due to its flexibility and scalability. The ETL process will consist of the following steps:
+
+1. **Extract**:
+
+   - Connect to various data sources using appropriate connectors (JDBC for databases, REST for APIs, etc.)
+   - Schedule regular data pulls or set up event-driven extractions
+
+2. **Transform**:
+
+   - Data Cleaning: Remove duplicates, handle missing values, correct formatting issues
+   - Data Validation: Ensure data meets predefined quality standards
+   - Data Enrichment: Augment data with additional information if necessary
+   - Data Mapping: Transform source data schema to match the CPL Database schema
+
+3. **Load**:
+   - Batch Loading: For large historical data imports
+   - Incremental Loading: For regular updates from ongoing operations
+   - Real-time Streaming: For time-sensitive data that needs immediate processing
+
+### Implementation Details
+
+1. **Apache NiFi Dataflow**:
+
+   - Design a NiFi dataflow that encompasses all data sources
+   - Implement error handling and data quality checks within the flow
+   - Set up monitoring and alerting for the NiFi process
+
+2. **Staging Area**:
+
+   - Implement a staging database to hold transformed data before final loading
+   - Use this area for final validation and reconciliation
+
+3. **Data Validation Rules**:
+
+   - Develop a comprehensive set of data validation rules
+   - Implement these rules in both NiFi and the application layer
+
+4. **Logging and Auditing**:
+
+   - Set up detailed logging for all ETL processes
+   - Implement audit trails to track data lineage
+
+5. **Integration with Existing Modules**:
+   - Ensure the Data Import Module in the application server can trigger and monitor ETL processes
+   - Implement callbacks to update the UI on import progress and completion
+
+### Data Import Workflow
+
+1. Admin initiates data import through the UI
+2. Application server triggers the appropriate NiFi process
+3. NiFi extracts data from the specified source
+4. Data is transformed according to predefined rules
+5. Transformed data is loaded into the staging area
+6. Final validation is performed
+7. Data is moved from staging to the main database
+8. Import status and logs are sent back to the application server
+9. UI is updated with import results
+
+### Handling Large Datasets
+
+For particularly large datasets:
+
+1. Implement parallel processing in NiFi to speed up transformations
+2. Use database partitioning for efficient data loading
+3. Consider using AWS Glue for serverless, scalable ETL jobs if NiFi reaches its limits
+
+### Data Quality Assurance
+
+1. Implement data profiling to understand the characteristics of incoming data
+2. Set up automated data quality checks post-import
+3. Create dashboards for data quality metrics
+
+### Security Considerations
+
+1. Ensure all data transfers are encrypted
+2. Implement access controls on the ETL process
+3. Mask or encrypt sensitive data during the ETL process
+
 ## 4. Implementation Strategy
 
 ### Development Methodology
