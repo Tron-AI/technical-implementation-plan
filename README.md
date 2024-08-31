@@ -241,14 +241,6 @@ We will use an Agile Scrum methodology for this project. This approach allows fo
 6. Sprint 9 (2 weeks): Testing, bug fixes, and performance optimization
 7. Sprint 10 (2 weeks): Deployment preparation and user acceptance testing
 
-### Task Allocation
-
-- Frontend Developer: React component development, state management, UI/UX implementation
-- Backend Developer: API development, business logic implementation, database interactions
-- Database Specialist: Database schema design, optimization, and maintenance
-- QA Engineer: Test plan development, test case creation, automated testing implementation
-- DevOps Engineer: CI/CD pipeline setup, deployment scripting, infrastructure management
-
 ## 5. Development Environment Setup
 
 ### Tools and Technologies
