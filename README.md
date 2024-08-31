@@ -225,6 +225,8 @@ This data model represents the core entities in the CPL Database system:
 
 By implementing these integrations, the CPL Database system will be able to efficiently communicate with external services, manage documents, send notifications, and provide robust reporting capabilities while maintaining data security and integrity.
 
+# Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -244,6 +246,45 @@ sequenceDiagram
     S3-->>API: Upload successful
     API-->>Frontend: Application submitted
     Frontend-->>User: Show success message
+
+```
+
+# CPL Database Component Diagram
+
+```mermaid
+graph TD
+    A[Web Client] -->|HTTP/HTTPS| B[Load Balancer]
+    B --> C[Web Server]
+    C --> D[Application Server]
+    D --> E[User Management]
+    D --> F[CPL Application Management]
+    D --> G[Document Management]
+    D --> H[Search & Filter]
+    D --> I[Reporting]
+    E --> J[Database]
+    F --> J
+    G --> J
+    G --> K[S3 Storage]
+    H --> J
+    I --> J
+    D --> L[Email Service]
+
+```
+
+# CPL Database Data Flow Diagram
+
+```mermaid
+graph TD
+    A[User] -->|Input| B[Web Interface]
+    B -->|Submit| C[Application Processing]
+    C -->|Store| D[Database]
+    C -->|Upload| E[Document Storage]
+    F[Admin] -->|Query| G[Reporting Module]
+    G -->|Retrieve| D
+    H[System] -->|Trigger| I[Notification Service]
+    I -->|Send| J[Email to User]
+    D -->|Retrieve| K[Search & Filter Module]
+    K -->|Display| B
 
 ```
 
@@ -284,6 +325,95 @@ We will use Git for version control with the following branching strategy:
 - `develop`: Integration branch for features
 - `feature/*`: Individual feature branches
 - `hotfix/*`: Emergency fixes for production
+
+### Sample Code and UI for Dashboard
+
+Great, to add this code to your `README.md` file with proper formatting, you can wrap it with triple backticks and specify `javascript` for syntax highlighting. Here’s how you can add your React code:
+
+\```javascript
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+
+const MockupDashboard = () => (
+<Card className="w-full max-w-4xl mx-auto">
+<CardHeader>
+<CardTitle>CPL Database Dashboard</CardTitle>
+</CardHeader>
+<CardContent>
+<Tabs defaultValue="applications">
+<TabsList>
+<TabsTrigger value="applications">Applications</TabsTrigger>
+<TabsTrigger value="reports">Reports</TabsTrigger>
+<TabsTrigger value="settings">Settings</TabsTrigger>
+</TabsList>
+<TabsContent value="applications">
+<div className="space-y-4">
+<Input placeholder="Search applications..." />
+<div className="grid grid-cols-3 gap-4">
+<Card>
+<CardHeader>
+<CardTitle>New Applications</CardTitle>
+</CardHeader>
+<CardContent>10</CardContent>
+</Card>
+<Card>
+<CardHeader>
+<CardTitle>In Progress</CardTitle>
+</CardHeader>
+<CardContent>25</CardContent>
+</Card>
+<Card>
+<CardHeader>
+<CardTitle>Completed</CardTitle>
+</CardHeader>
+<CardContent>50</CardContent>
+</Card>
+</div>
+</div>
+</TabsContent>
+</Tabs>
+</CardContent>
+</Card>
+);
+
+const MockupApplicationForm = () => (
+<Card className="w-full max-w-2xl mx-auto">
+<CardHeader>
+<CardTitle>New CPL Application</CardTitle>
+</CardHeader>
+<CardContent>
+<form className="space-y-4">
+<div>
+<Label htmlFor="name">Full Name</Label>
+<Input id="name" placeholder="Enter full name" />
+</div>
+<div>
+<Label htmlFor="email">Email</Label>
+<Input id="email" type="email" placeholder="Enter email" />
+</div>
+<div>
+<Label htmlFor="phone">Phone Number</Label>
+<Input id="phone" placeholder="Enter phone number" />
+</div>
+<Button type="submit">Submit Application</Button>
+</form>
+</CardContent>
+</Card>
+);
+
+export default function CPLDatabaseMockups() {
+return (
+<div className="space-y-8">
+<MockupDashboard />
+<MockupApplicationForm />
+</div>
+);
+}
+\```
 
 ### Development Environment Setup
 
