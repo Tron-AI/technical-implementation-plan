@@ -345,17 +345,6 @@ By implementing these integrations, the CPL Database system will be able to effi
 7. Week 13: Final testing and preparation for deployment
 8. Week 14: Deployment to production and post-launch support
 
-## Resources and Team Allocation
-
-1. Frontend Developer (1 FTE)
-2. Backend Developer (1 FTE)
-3. Database Specialist (0.5 FTE)
-4. QA Engineer (0.5 FTE)
-5. Project Manager (0.5 FTE)
-6. DevOps Engineer (0.25 FTE)
-
-Total: 3.75 FTE
-
 ## Risk Assessment and Mitigation
 
 1. Risk: Data migration issues
