@@ -225,6 +225,25 @@ This data model represents the core entities in the CPL Database system:
 
 By implementing these integrations, the CPL Database system will be able to efficiently communicate with external services, manage documents, send notifications, and provide robust reporting capabilities while maintaining data security and integrity.
 
+sequenceDiagram
+actor User
+participant Frontend
+participant API
+participant Auth
+participant DB
+participant S3
+
+    User->>Frontend: Fill application form
+    Frontend->>API: POST /api/applications
+    API->>Auth: Validate token
+    Auth-->>API: Token valid
+    API->>DB: Create application
+    DB-->>API: Application created
+    API->>S3: Upload documents
+    S3-->>API: Upload successful
+    API-->>Frontend: Application submitted
+    Frontend-->>User: Show success message
+
 ## 4. Implementation Strategy
 
 ### Development Methodology
