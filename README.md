@@ -328,6 +328,11 @@ We will use Git for version control with the following branching strategy:
 
 ### Sample Code and UI for Dashboard
 
+<img width="786" alt="Screenshot 2024-08-31 at 7 13 53 AM" src="https://github.com/user-attachments/assets/b61dc165-bfc4-4c47-8bc9-e11fa999d332">
+<img width="781" alt="Screenshot 2024-08-31 at 7 07 00 AM" src="https://github.com/user-attachments/assets/40c0dca9-85e9-4b9d-af55-8c023b85298e">
+<img width="796" alt="Screenshot 2024-08-31 at 7 06 51 AM" src="https://github.com/user-attachments/assets/ab88d339-06ab-4885-8cec-5a5cd61dc07e">
+
+
 ### Development Environment Setup
 
 1. Clone the repository: `git clone [repository-url]`
