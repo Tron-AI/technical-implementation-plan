@@ -269,6 +269,10 @@ sequenceDiagram
     participant Auth
     participant DB
     participant S3
+    participant ActiveCampaign
+    participant BITool
+    participant AITool
+    participant DataSource
 
     User->>Frontend: Fill application form
     Frontend->>API: POST /api/applications
@@ -278,9 +282,37 @@ sequenceDiagram
     DB-->>API: Application created
     API->>S3: Upload documents
     S3-->>API: Upload successful
+    API->>ActiveCampaign: Sync application data
+    ActiveCampaign-->>API: Sync confirmed
     API-->>Frontend: Application submitted
     Frontend-->>User: Show success message
 
+    User->>Frontend: Request analytics
+    Frontend->>API: GET /api/analytics
+    API->>BITool: Request data analysis
+    BITool->>DB: Query data
+    DB-->>BITool: Return data
+    BITool-->>API: Provide analytics
+    API-->>Frontend: Display analytics
+    Frontend-->>User: Show analytics dashboard
+
+    User->>Frontend: Request AI insights
+    Frontend->>API: GET /api/ai-insights
+    API->>AITool: Request insights
+    AITool->>DB: Query data
+    DB-->>AITool: Return data
+    AITool-->>API: Provide AI insights
+    API-->>Frontend: Display AI insights
+    Frontend-->>User: Show AI-powered recommendations
+
+    User->>Frontend: Initiate data import
+    Frontend->>API: POST /api/import
+    API->>DataSource: Request data
+    DataSource-->>API: Provide data
+    API->>DB: Import data
+    DB-->>API: Import successful
+    API-->>Frontend: Import completed
+    Frontend-->>User: Show import success message
 ```
 
 # CPL Database Component Diagram
