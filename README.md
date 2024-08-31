@@ -86,6 +86,7 @@ graph TD
     D -->|Analytics| K[BI Tool]
     D -->|ML Insights| L[AI Tool]
     M[Data Sources] -->|ETL| E
+    D -->|Data Import| M
 ```
 
 The CPL Database system follows a client-server architecture:
@@ -294,6 +295,10 @@ graph TD
     D --> G[Document Management]
     D --> H[Search & Filter]
     D --> I[Reporting]
+    D --> M[Data Synchronization]
+    D --> N[BI Integration]
+    D --> O[AI Integration]
+    D --> P[Data Import]
     E --> J[Database]
     F --> J
     G --> J
@@ -301,6 +306,10 @@ graph TD
     H --> J
     I --> J
     D --> L[Email Service]
+    M --> Q[ActiveCampaign]
+    N --> R[BI Tool]
+    O --> S[AI Tool]
+    P --> T[Data Sources]
 
 ```
 
@@ -318,6 +327,10 @@ graph TD
     I -->|Send| J[Email to User]
     D -->|Retrieve| K[Search & Filter Module]
     K -->|Display| B
+    L[ActiveCampaign] <-->|Sync| D
+    M[BI Tool] -->|Analyze| D
+    N[AI Tool] -->|Process| D
+    O[Data Sources] -->|Import| D
 
 ```
 
